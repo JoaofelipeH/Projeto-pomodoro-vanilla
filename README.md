@@ -1,28 +1,26 @@
 # 🍅 Pomodoro Focus Timer | Vanilla JS
 
-Um cronômetro Pomodoro funcional e robusto, desenvolvido exclusivamente com tecnologias web nativas (Vanilla JS, HTML5 e CSS3). Este projeto demonstra a aplicação de conceitos fundamentais de engenharia de software e manipulação direta da API do DOM.
+Um aplicativo de cronômetro Pomodoro funcional e robusto, desenvolvido exclusivamente com tecnologias web nativas (Vanilla JS, HTML5 e CSS3). 
 
-## 🎯 Objetivo do Projeto
-O objetivo principal foi construir uma ferramenta de produtividade que gerencia estados de tempo e processos assíncronos de forma eficiente, garantindo uma interface síncrona com os dados em memória.
+Este projeto foi construído para solidificar os fundamentos de engenharia de software no Front-end, com foco em manipulação direta da API do DOM, gerenciamento de estado na memória e controle de processos assíncronos.
 
-## ⚙️ Funcionalidades Implementadas
-* **Controle de Fluxo (Start/Pause):** Sistema de início e interrupção do cronômetro com preservação do estado do tempo.
-* **Reset de Aplicação:** Função para restaurar o estado inicial da variável de tempo (1500 segundos) e atualizar a interface visual simultaneamente.
-* **Formatação em Tempo Real:** Lógica matemática para conversão de segundos em formato `MM:SS`, utilizando `padStart` para garantir a estética visual (ex: `05:00`).
-* **Gerenciamento de Interface (DOM):** Atualização dinâmica de elementos HTML sem a necessidade de recarregar a página.
+## ⚙️ Funcionalidades
+* **Iniciar:** Dispara o cronômetro padrão de 25 minutos.
+* **Pausar:** Interrompe o tempo exato, congelando o estado sem perda de dados.
+* **Reiniciar (Reset):** Restaura o estado da memória para o valor inicial e força a atualização sincronizada da interface visual (DOM) para `25:00`.
+* **Formatação Dinâmica:** Renderização em tempo real do formato `MM:SS`, utilizando `padStart` para garantir a integridade estética (ex: `09:05`).
 
-## 🧠 Arquitetura e Conceitos Aplicados
-A construção deste software envolveu desafios técnicos específicos que demonstram maturidade no desenvolvimento Front-end:
+## 🧠 Arquitetura e Lógica Aplicada
+A construção deste software evitou o uso de frameworks para garantir o entendimento profundo de como o navegador processa as informações:
 
-1. **Gestão de Processos (Motor de Intervalo):** Utilização do `setInterval` para criar o motor de contagem. O controle é feito através da captura do ID do processo (`intervaloid`), permitindo o controle total sobre a execução.
-2. **Prevenção de Concorrência (Singleton Pattern):** Implementação de uma trava lógica que utiliza `clearInterval` antes de iniciar qualquer novo ciclo. Isso impede a criação de múltiplos processos simultâneos, evitando o consumo excessivo de memória e a aceleração indevida do tempo.
-3. **Persistência de Estado Local:** Separação clara entre a **Variável de Estado** (memória RAM) e o **Elemento de Visualização** (DOM). Isso permite que o cronômetro seja pausado e retomado sem a perda de sincronia dos dados.
-4. **Escopo Global vs. Local:** Organização estratégica de variáveis para permitir que diferentes funções (Iniciar, Pausar, Resetar) manipulem o mesmo conjunto de dados de forma consistente.
+1. **Separação de Preocupações (Estado vs. DOM):** Implementação clara da diferença entre o "dado bruto" (a variável de tempo rodando na memória RAM) e a "camada de visualização" (o conteúdo injetado no HTML via `textContent`).
+2. **Controle de Processos e Threads:** Domínio sobre as Web APIs de tempo (`setInterval` e `clearInterval`), utilizando IDs de referência em memória para gerenciar motores de execução em segundo plano.
+3. **Prevenção de Memory Leaks e Concorrência:** Uso do padrão Singleton lógico no botão de Iniciar. Ao aplicar `clearInterval` antes de iniciar um novo ciclo, o sistema impede a criação de "processos fantasmas" simultâneos, evitando consumo excessivo de memória e o bug de aceleração do tempo.
 
-## 🛠️ Tecnologias
-* **JavaScript (ES6+):** Lógica de temporização, manipulação de eventos e cálculos matemáticos.
-* **HTML5:** Estrutura semântica dos elementos de controle e exibição.
-* **CSS3:** Estilização da interface e feedback visual ao usuário.
+## 🛠️ Tecnologias Utilizadas
+* **HTML5:** Estrutura semântica da interface.
+* **CSS3:** Estilização e layout.
+* **JavaScript (ES6+):** Regras de negócio, mutação de estado e manipulação de eventos.
 
 ---
-*Projeto finalizado por João Felipe*
+*Desenvolvido por João Felipe*

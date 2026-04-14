@@ -26,3 +26,11 @@ document.getElementById("buttom-start").addEventListener("click", function () {
 document.getElementById("buttom-pause").addEventListener("click", function () {
     clearInterval(intervaloid);
 });
+//
+document.getElementById("buttom-reset").addEventListener("click", function(){
+    //
+    clearInterval(intervaloid);
+    tempo = 1500;
+    cronometro.textContent = '25:00'
+    //
+})
